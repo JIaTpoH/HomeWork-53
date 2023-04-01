@@ -35,7 +35,7 @@ public class Point {
   // этот метод прочитает точку с клавиатуры
   public static Point read(BufferedReader bufferedReader) throws IOException {
     System.out.println("Введите координаты точки:");
-    String coordinates = bufferedReader.readLine().toUpperCase();
+    String coordinates = bufferedReader.readLine();
     return parse(coordinates);
   }
 
@@ -46,10 +46,10 @@ public class Point {
       throw new IllegalArgumentException(
           "Неправильный формат координат, введите два целых числа через запятую: " + coordinates);
     }
-    int x = Integer.parseInt(coordinates.substring(0, sepIndex).toUpperCase()); // "x, y" -> "x" -> x
+    int x = Integer.parseInt(coordinates.substring(0, sepIndex)); // "x, y" -> "x" -> x
     // "   abc  ".trim() --> "abc"
     // "x, y" -> " y" -> "y" -> y
-    int y = Integer.parseInt(coordinates.substring(sepIndex + 1).trim().toUpperCase());
+    int y = Integer.parseInt(coordinates.substring(sepIndex + 1).trim());
     return new Point(x, y);
   }
 
