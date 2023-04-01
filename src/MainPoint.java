@@ -8,7 +8,7 @@ public class MainPoint {
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     Point point = Point.read(br);
-    String quadrant = point.getQuadrant();
-    System.out.println(quadrant);
+    String coordinates = point.coordinatesFind();
+    System.out.println(coordinates);
   }
 }

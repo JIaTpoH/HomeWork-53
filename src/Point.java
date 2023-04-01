@@ -23,6 +23,7 @@ public class Point {
     this.y = y;
   }
 
+
   public int getX() {
     return x;
   }
@@ -34,7 +35,7 @@ public class Point {
   // этот метод прочитает точку с клавиатуры
   public static Point read(BufferedReader bufferedReader) throws IOException {
     System.out.println("Введите координаты точки:");
-    String coordinates = bufferedReader.readLine();
+    String coordinates = bufferedReader.readLine().toUpperCase();
     return parse(coordinates);
   }
 
@@ -45,10 +46,25 @@ public class Point {
       throw new IllegalArgumentException(
           "Неправильный формат координат, введите два целых числа через запятую: " + coordinates);
     }
-    int x = Integer.parseInt(coordinates.substring(0, sepIndex)); // "x, y" -> "x" -> x
+    int x = Integer.parseInt(coordinates.substring(0, sepIndex).toUpperCase()); // "x, y" -> "x" -> x
     // "   abc  ".trim() --> "abc"
     // "x, y" -> " y" -> "y" -> y
-    int y = Integer.parseInt(coordinates.substring(sepIndex + 1).trim());
+    int y = Integer.parseInt(coordinates.substring(sepIndex + 1).trim().toUpperCase());
     return new Point(x, y);
+  }
+
+  public String coordinatesFind() {
+    if (x > 0 && y > 0) {
+      return "Точка находится в первой координатной четверти";
+    } else if (x < 0 && y > 0) {
+      return "Точка находится во второй координатной четверти";
+    } else if (x < 0 && y < 0) {
+      return "Точка находится в третьей координатной четверти";
+    } else if (x > 0 && y < 0) {
+      return "Точка находится в четвертой координатной четверти";
+    } else if (x == 0 && y == 0) {
+      return "Точка находится в начале координат";
+    }
+    return null;
   }
 }
