@@ -9,6 +9,5 @@ public class MainPoint {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     Point point = Point.read(br);
     System.out.println(point.coordinatesFind());
-
   }
 }
